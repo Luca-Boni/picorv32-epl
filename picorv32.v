@@ -845,6 +845,7 @@ module picorv32 #(
 `ifdef DEBUG
 	always @(posedge clk) begin
 		if (dbg_next) begin
+			$display("profilerinfo %d: %x", $time, dbg_insn_addr);
 			if (&dbg_insn_opcode[1:0])
 				$display("DECODE: 0x%08x 0x%08x %-0s", dbg_insn_addr, dbg_insn_opcode, dbg_ascii_instr ? dbg_ascii_instr : "UNKNOWN");
 			else
